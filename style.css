@@ -1,0 +1,417 @@
+:root {
+  --green-deep: #0f2e22;
+  --gold: #c9a660;
+  --cream: #f6efe3;
+  --pink: #e8afc0;
+  --pink-deep: #9c3f53;
+  --env-top: 9%;
+  --env-bottom: 9%;
+  --env-left: 13%;
+  --env-right: 13%;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  background: url('uuu.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Aref Ruqaa', 'Cairo', serif;
+  overflow-x: hidden;
+}
+
+/* ================= الظرف ================= */
+#envScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  overflow: hidden;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#envScreen.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#cover {
+  position: relative;
+  width: min(90vw, 700px);
+  aspect-ratio: 826/1169;
+  cursor: pointer;
+  perspective: 2000px;
+}
+
+#sealBtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110px;
+  height: 110px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  z-index: 100;
+  padding: 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+#sealBtn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+#sealBtn:hover img {
+  transform: scale(1.08);
+}
+
+#sealBtn.hide {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0) rotate(360deg);
+  transition: 0.6s ease;
+}
+
+.door {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background-image: url("uuu.jpeg");
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  transition: transform 1.6s cubic-bezier(.22, .61, .36, 1);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+}
+
+.left {
+  left: 0;
+  background-position: left center;
+  transform-origin: left center;
+}
+
+.right {
+  right: 0;
+  background-position: right center;
+  transform-origin: right center;
+}
+
+#cover.open .left {
+  transform: rotateY(-110deg) translateX(-30px);
+}
+
+#cover.open .right {
+  transform: rotateY(110deg) translateX(30px);
+}
+
+#cover.open .door {
+  filter: brightness(0.8) drop-shadow(0 0 25px rgba(0,0,0,0.5));
+}
+
+/* ================= الدعوة الرئيسية ================= */
+#letter {
+  max-width: 520px;
+  margin: auto;
+  padding: 3rem 1.2rem 4rem;
+  opacity: 0;
+  transform: translateY(25px);
+  transition: 0.9s ease;
+  border-radius: 12px;
+  min-height: 100vh;
+}
+
+#letter.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.bismillah {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.bismillah h3 {
+  font-family: 'Aref Ruqaa', serif;
+  color: #000000;
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+}
+
+.invitation-header {
+  margin-top: 1.5rem;
+}
+
+.invite-word {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #000000;
+}
+
+/* أسماء الآباء */
+.parents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto 1.2rem;
+  color: #080808;
+}
+
+.parent {
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.parent span {
+  display: block;
+  font-size: 1.2rem;
+}
+
+.parent strong {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* نص الدعوة في المنتصف */
+.event-title {
+  margin: 1.5rem 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000000;
+}
+
+/* تنسيق العريس والعروس (نجله عادل | الخواتم | كريمته مي) */
+.couples-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1.2rem;
+  width: 100%;
+}
+
+.person-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.relation {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333333;
+}
+
+.person-box .name {
+  font-family: 'Aref Ruqaa', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #000000;
+  line-height: 1.2;
+}
+
+.rings-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0px 2px 4px rgba(197, 157, 63, 0.4));
+  padding: 0 10px;
+}
+
+/* ================= التاريخ ================= */
+.date-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 25px 0 15px;
+  width: 100%;
+}
+
+.date-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  max-width: 320px;
+}
+
+.date-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.date-side .line {
+  width: 100%;
+  height: 1.5px;
+  background-color: #e6bb60;
+  opacity: 0.7;
+}
+
+.date-side .day-name,
+.date-side .year-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000000;
+  padding: 2px 0;
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+
+/* رقم اليوم البارز بالوسط */
+.day-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.7rem;
+  font-weight: bold;
+  color: #000000;
+  line-height: 1;
+  padding: 0 5px;
+}
+
+.time-event {
+  font-family: "Aref Ruqaa", serif;
+  font-size: 1.8rem;
+  color: #000;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.divider-orn {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin: 1rem auto 1.5rem;
+}
+
+/* ================= الكروت والموقع ================= */
+.card {
+  background: var(--cream);
+  border: 1px solid var(--gold);
+  border-radius: 15px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.icon {
+  width: 35px;
+  height: 35px;
+  color: var(--pink-deep);
+  margin-bottom: 1rem;
+}
+
+.card h2 {
+  font-family: 'Aref Ruqaa', serif;
+  color: var(--green-deep);
+  font-size: 1.5rem;
+}
+
+.big-date {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.7rem;
+  font-style: italic;
+  color: var(--pink-deep);
+  margin: 0.5rem;
+}
+
+.card p {
+  color: #3c4a41;
+  line-height: 2;
+}
+
+.placeholder {
+  color: #8a8578;
+  font-style: italic;
+}
+
+/* ================= العداد التصاعدي / التنازلي ================= */
+.countdown-card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.countdown-card h2 {
+  color: black;
+}
+
+.cd-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+.cd-box {
+  background: var(--cream);
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  padding: 0.8rem 0.3rem;
+}
+
+.num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  color: var(--pink-deep);
+}
+
+.lbl {
+  font-size: 0.7rem;
+  color: #666;
+}
+
+.closing {
+  text-align: center;
+  margin-top: 2rem;
+  color: black;
+  font-family: 'Aref Ruqaa', serif;
+  font-size: 1.8rem;
+  font-style: normal;
+}
+
+/* الشاشات الصغيرة */
+@media(max-width: 380px) {
+  .person-box .name {
+    font-size: 1.8rem;
+  }
+  .parents {
+    width: 100%;
+  }
+  .parent strong {
+    font-size: 1.2rem;
+  }
+}
